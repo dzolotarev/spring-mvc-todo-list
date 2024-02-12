@@ -35,7 +35,7 @@ public class TaskRepository {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Task getById(long id) {
+    public Task getById(Long id) {
         Query<Task> query = getSession().createQuery("select t from Task t where t.id=:ID", Task.class);
         query.setParameter("ID", id);
         return query.getSingleResult();

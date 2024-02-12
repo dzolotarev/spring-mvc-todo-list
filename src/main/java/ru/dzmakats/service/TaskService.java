@@ -30,7 +30,7 @@ public class TaskService {
     }
 
     @Transactional
-    public Task edit(long id, String description, Status status) {
+    public Task edit(Long id, String description, Status status) {
         Task task = taskRepository.getById(id);
         if (isNull(task)) {
             throw new RuntimeException("Task id not found"); //по хорошему; ошибки надо отправлять в контроллер
