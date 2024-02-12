@@ -1,4 +1,4 @@
-package ru.dzmakats.dao;
+package ru.dzmakats.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
@@ -16,7 +16,7 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 @Repository
-public class TaskDAO {
+public class TaskRepository {
 
     private final SessionFactory sessionFactory;
 
@@ -50,7 +50,6 @@ public class TaskDAO {
     public void delete(Task task) {
         getSession().remove(task);
     }
-
 
     private Session getSession() {
         return sessionFactory.getCurrentSession();
