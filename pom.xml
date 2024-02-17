@@ -17,7 +17,7 @@
     </properties>
 
     <build>
-        <finalName>root</finalName>
+        <finalName>todo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

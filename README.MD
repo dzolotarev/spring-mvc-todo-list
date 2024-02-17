@@ -20,4 +20,4 @@
 - git clone
 - mvn clean install
 - docker compose up
-- http://localhost:8080/root/
+- http://localhost:8080/todo/
