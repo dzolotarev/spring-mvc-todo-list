@@ -44,7 +44,7 @@ public class AppConfig {
     public DataSource dataSource() {
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/todo");
+        dataSource.setJdbcUrl("jdbc:mysql://db:3306/todo");
         dataSource.setUsername("root");
         dataSource.setPassword("root");
         dataSource.setMaximumPoolSize(10);
