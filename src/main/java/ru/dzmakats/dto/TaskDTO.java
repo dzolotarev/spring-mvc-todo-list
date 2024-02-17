@@ -1,5 +1,6 @@
 package ru.dzmakats.dto;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import ru.dzmakats.entity.Status;

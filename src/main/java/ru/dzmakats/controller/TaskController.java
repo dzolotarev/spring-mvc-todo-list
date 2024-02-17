@@ -33,19 +33,21 @@ public class TaskController {
     }
 
     @PostMapping("/{id}")
-    public void edit(Model model,
-                     @PathVariable("id") Long id,
-                     @RequestBody TaskDTO taskDTO) {
+    public String edit(Model model,
+                       @PathVariable("id") Long id,
+                       @RequestBody TaskDTO taskDTO) {
         if (isNull(id) || id < 0) {
             throw new RuntimeException("Invalid ID");
         }
         Task task = taskService.edit(id, taskDTO.getDescription(), taskDTO.getStatus());
+        return tasks(model, 1, 10);
     }
 
     @PostMapping("/")
-    public void add(Model model,
-                    @RequestBody TaskDTO taskDTO) {
+    public String add(Model model,
+                      @RequestBody TaskDTO taskDTO) {
         Task task = taskService.create(taskDTO.getDescription(), taskDTO.getStatus());
+        return tasks(model, 1, 10);
     }
 
     @DeleteMapping("/{id}")
@@ -55,7 +57,7 @@ public class TaskController {
             throw new RuntimeException("Invalid ID");
         }
         taskService.delete(id);
-        return "tasks";
+        return tasks(model, 1, 10);
     }
 
 }
