@@ -9,6 +9,7 @@ import ru.dzmakats.entity.Task;
 import ru.dzmakats.service.TaskService;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static java.util.Objects.isNull;
 
@@ -29,6 +30,12 @@ public class TaskController {
                         @RequestParam(value = "limit", defaultValue = "10", required = false) Integer limit) {
         List<Task> tasks = taskService.getAll((page - 1) * limit, limit);
         model.addAttribute("tasks", tasks);
+        model.addAttribute("currentPage", page);
+        int totalPages = (int) Math.ceil(1.0 * taskService.getAllCount() / limit);
+        if (totalPages > 1) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().toList();
+            model.addAttribute("page_numbers", pageNumbers);
+        }
         return "tasks";
     }
 
